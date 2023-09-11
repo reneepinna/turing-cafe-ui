@@ -1,4 +1,4 @@
-import 'ReservationCard.css';
+import './ReservationCard.css';
 
 function ReservationCard({ reservation }) {
   const { id, name, date, time, number } = reservation;
