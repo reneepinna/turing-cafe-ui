@@ -8,6 +8,9 @@ describe('reservations', () => {
   it('should  be able to add a reservation', () => {
     cy.visit('http://localhost:3000/');
 
+    cy.get('.formNotice').should('contain', 'Make a reservation!')
+
+
     cy.get('.reservationCard').first().should('contain', 'Christie');
     cy.get('.reservationCard').last().should('contain', 'Pam');
 
@@ -23,4 +26,14 @@ describe('reservations', () => {
     cy.get('.reservationCard').last().should('contain', 'Number of guests: 2');
 
   });
+  it('should require all inputs', () => {
+    cy.visit('http://localhost:3000/');
+
+    cy.get('#name').type('Renee')
+    cy.get('#date').type('03/08')
+    cy.get('#time').type('12:30')
+    cy.get('input[type=submit]').click()
+
+    cy.get('.formNotice').should('contain', 'All inputs are required.')
+  })
 });
