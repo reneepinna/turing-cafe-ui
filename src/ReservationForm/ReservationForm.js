@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './ReservationForm.css';
 
-function ReservationForm() {
+function ReservationForm({ setReservations }) {
   const [form, setForm] = useState({
     name: '',
     date: '',
@@ -17,8 +17,10 @@ function ReservationForm() {
   }
 
   function submitReservation(e) {
-    e.preventDefault()
-    console.log(form)
+    e.preventDefault();
+    // const {name, date, time, number } = form
+    setReservations(prev => [...prev, form]);
+    setForm({ name: '', date: '', time: '', number: '' });
   }
 
   return (
@@ -54,7 +56,7 @@ function ReservationForm() {
       <input
         type='submit'
         value='Make Reservation'
-        onClick={(e) => submitReservation(e)}
+        onClick={e => submitReservation(e)}
       />
     </form>
   );
