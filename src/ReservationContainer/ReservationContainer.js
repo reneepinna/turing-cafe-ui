@@ -11,9 +11,9 @@ function ReservationContainer() {
       .then(data => setReservations(data))
   }, [])
 
-  const cards = reservations.map(reservation => <ReservationCard reservation={reservation} />)
+  const cards = reservations.map(reservation => <ReservationCard reservation={reservation} key={reservation.id}/>)
 
-  return <div>
+  return <div className='reservationContainer'>
     {cards}
   </div>
 }
