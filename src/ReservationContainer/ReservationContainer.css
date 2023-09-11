@@ -1,4 +1,5 @@
 .reservationContainer {
+  padding: 2rem;;
   width: 90vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
