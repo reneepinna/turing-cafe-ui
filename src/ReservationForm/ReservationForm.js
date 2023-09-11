@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './ReservationForm.css';
+import { postReservation } from '../apiCalls';
 
 function ReservationForm({ setReservations }) {
   const [form, setForm] = useState({
@@ -18,8 +19,8 @@ function ReservationForm({ setReservations }) {
 
   function submitReservation(e) {
     e.preventDefault();
-    // const {name, date, time, number } = form
-    setReservations(prev => [...prev, form]);
+    postReservation(form).then(data =>  setReservations(prev => [...prev, data]) )
+   
     setForm({ name: '', date: '', time: '', number: '' });
   }
 
